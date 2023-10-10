@@ -1,7 +1,7 @@
 package cronlist
 
 import (
-	"context"
+  "context"
   "log"
 
   u "cronlist/utils"
@@ -16,6 +16,6 @@ func CronActivity (ctx context.Context, message string) (string, error) {
 
   log.Printf("%sCronActivity:%s Complete.%s\n", u.ColorGreen, u.ColorBlue, u.ColorReset)
 
-	return "Message sent", nil
+  return "Message sent", nil
 }
 

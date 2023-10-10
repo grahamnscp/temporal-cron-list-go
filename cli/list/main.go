@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+  "log"
   "os"
   "fmt"
   "context"
@@ -11,7 +11,7 @@ import (
   "math"
   "strings"
 
-	"go.temporal.io/sdk/client"
+  "go.temporal.io/sdk/client"
   "go.temporal.io/api/workflowservice/v1"
   commonpb "go.temporal.io/api/common/v1"
   historypb "go.temporal.io/api/history/v1"
@@ -20,7 +20,7 @@ import (
 
   "github.com/aptible/supercronic/cronexpr"
 
-	u "cronlist/utils"
+  u "cronlist/utils"
 )
 
 var log_level = strings.ToLower(os.Getenv("LOG_LEVEL"))
@@ -29,16 +29,16 @@ func main() {
 
   log.Printf("CronList: Started")
 
-	clientOptions, err := u.LoadClientOptions()
-	if err != nil {
-		log.Fatalln("CronList: Failed to load Temporal Cloud environment:", err)
-	}
+  clientOptions, err := u.LoadClientOptions()
+  if err != nil {
+    log.Fatalln("CronList: Failed to load Temporal Cloud environment:", err)
+  }
 
-	c, err := client.Dial(clientOptions)
-	if err != nil {
-		log.Fatalln("CronList: Unable to create client", err)
-	}
-	defer c.Close()
+  c, err := client.Dial(clientOptions)
+  if err != nil {
+    log.Fatalln("CronList: Unable to create client", err)
+  }
+  defer c.Close()
 
 
   // list running cron workflows
