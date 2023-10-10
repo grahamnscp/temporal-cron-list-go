@@ -1,0 +1,22 @@
+# direnv .envrc
+
+# Temporal Cloud connection
+export TEMPORAL_HOST_URL="my-ns.abcd0.tmprl.cloud:7233"
+export TEMPORAL_NAMESPACE="my-ns.abcd0"
+
+# Temporal Cloud client cert
+export TEMPORAL_TLS_CERT="~/.temporal/tclient-cert.pem"
+export TEMPORAL_TLS_KEY="~/.temporal/tclient-cert.key"
+
+# Optional: path to root server CA cert
+export TEMPORAL_SERVER_ROOT_CA_CERT=
+# Optional: Server name to use for verifying the server's certificate
+export TEMPORAL_SERVER_NAME=
+
+export TEMPORAL_INSECURE_SKIP_VERIFY=false
+
+export TASK_QUEUE="CronListTQ"
+
+export LOG_LEVEL=info
+#export LOG_LEVEL=debug
+
