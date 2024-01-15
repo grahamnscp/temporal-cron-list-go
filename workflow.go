@@ -32,7 +32,7 @@ func CronListWorkflow(ctx workflow.Context, message string) (string, error) {
   ctx = workflow.WithActivityOptions(ctx, activityoptions)
 
   // Set search attribute status to ACTIVE
-  _ = u.UpcertSearchAttribute(ctx, "CustomStringField", "ACTIVE-CRON")
+  _ = u.UpsertSearchAttribute(ctx, "CustomStringField", "ACTIVE-CRON")
 
   var activityOutput string
 
@@ -40,14 +40,14 @@ func CronListWorkflow(ctx workflow.Context, message string) (string, error) {
 
   if activityErr != nil {
     // Set search attribute status to FAILED
-    _ = u.UpcertSearchAttribute(ctx, "CustomStringField", "FAILED-CRON")
+    _ = u.UpsertSearchAttribute(ctx, "CustomStringField", "FAILED-CRON")
     logger.Info(u.ColorGreen, "CronList-Workflow:", u.ColorReset, "Failed", u.ColorRed, "CronActivity returned failure:", activityErr, u.ColorReset)
     return activityOutput, fmt.Errorf("CronActivity: failed for message: %s", message)
   }
 
   // All done
   // Set search attribute status to COMPLETE
-  _ = u.UpcertSearchAttribute(ctx, "CustomStringField", "COMPLETE-CRON")
+  _ = u.UpsertSearchAttribute(ctx, "CustomStringField", "COMPLETE-CRON")
   logger.Info(u.ColorGreen, "CronList-Workflow:", u.ColorReset, "Complete", "-", workflow.GetInfo(ctx).WorkflowExecution.ID)
   return activityOutput, nil
 }
